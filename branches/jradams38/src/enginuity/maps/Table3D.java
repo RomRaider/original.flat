@@ -31,8 +31,13 @@ import static enginuity.util.TableAxisUtil.getLiveDataRangeForAxis;
 import enginuity.xml.RomAttributeParser;
 
 import static javax.swing.BorderFactory.createLineBorder;
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -370,6 +375,7 @@ public class Table3D extends Table {
         }
         xAxis.increment(increment);
         yAxis.increment(increment);
+        colorize();
     }
 
     public void multiply(double factor) {
@@ -714,11 +720,13 @@ public class Table3D extends Table {
             // put datavalues in clipboard and paste
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(String.valueOf(dataValues)), null);
             pasteValues();
+            colorize();
             // reset clipboard
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(input), null);
 
         } else if ("[Selection3D]".equalsIgnoreCase(pasteType)) { // paste selection
             pasteValues();
+            colorize();
         } else if ("[Selection1D]".equalsIgnoreCase(pasteType)) { // paste selection
             xAxis.paste();
             yAxis.paste();
