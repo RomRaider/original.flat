@@ -33,6 +33,8 @@ public abstract class TableMetadata implements Nameable, Serializable {
     protected int userLevel;
     protected String description;
     private boolean isAbstract;
+	private int ramAddress;
+	private int imageSize;
     
     public TableMetadata() { }
 
@@ -64,6 +66,14 @@ public abstract class TableMetadata implements Nameable, Serializable {
     
     public final int getAddress() {
         return address;
+    }
+    
+    public final void setRamAddress(int address) {
+    	this.ramAddress = address;
+    }
+    
+    public final int getRamAddress() {
+    	return ramAddress;
     }
         
     public final void setUserLevel(int level) {
@@ -109,5 +119,14 @@ public abstract class TableMetadata implements Nameable, Serializable {
                 
         return output;
     }
+
+	public void setImageSize(int imageSize) {
+		this.imageSize = imageSize;
+	}
+
+	public int getImageSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
     
 }

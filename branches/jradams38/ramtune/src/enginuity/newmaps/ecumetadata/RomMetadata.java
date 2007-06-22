@@ -21,14 +21,18 @@
 
 package enginuity.newmaps.ecumetadata;
 
+import enginuity.newmaps.ecumetadata.feature.FeatureDefinition;
 import enginuity.util.Nameable;
 import enginuity.util.NamedSet;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class RomMetadata implements Nameable, Serializable {
 
-    private String name;
+	private static final long serialVersionUID = -678506722398274518L;
+
+	private String name;
     private int idAddress;
     private String idString;    
     private String description;    
@@ -40,6 +44,7 @@ public class RomMetadata implements Nameable, Serializable {
     
     private NamedSet<Scale> scales;
     private NamedSet<TableMetadata> tables;
+    private HashMap<String, FeatureDefinition> features;
     private Category categories;
     
     private RomMetadata() { }
@@ -159,6 +164,12 @@ public class RomMetadata implements Nameable, Serializable {
     public void setCategories(Category categories) {
         this.categories = categories;
     }
-
     
+    public void setFeatures(HashMap<String, FeatureDefinition> features) {
+    	this.features = features;
+    }
+    
+    public HashMap<String, FeatureDefinition> getFeatures() {
+    	return features;
+    }
 }
